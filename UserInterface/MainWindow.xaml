@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UserInterface"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="950" Width="800">
     <Grid>
-        
+        <DataGrid x:Name="UbraniaGrid" HorizontalAlignment="Center" Height="622" VerticalAlignment="Top" Width="644" Margin="0,56,0,0"/>
+        <Button x:Name="DodajUbranieBtn" Content="Add" HorizontalAlignment="Left" Margin="155,715,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.108,-0.253" Width="86"/>
+        <Button x:Name="ZaktualizujUbranieBtn" Content="Update" HorizontalAlignment="Left" Margin="257,715,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.217" Width="86"/>
+        <Button x:Name="UsunUbranieBtn" Content="Remove" HorizontalAlignment="Center" Margin="0,715,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.217" Width="86"/>
+        <Button x:Name="OdswiezBtn" Content="Refresh" HorizontalAlignment="Left" Margin="581,715,0,0" VerticalAlignment="Top" Width="65"/>
     </Grid>
 </Window>
