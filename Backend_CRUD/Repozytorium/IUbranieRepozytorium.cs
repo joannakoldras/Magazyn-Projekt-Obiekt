@@ -10,7 +10,7 @@ namespace Backend_CRUD.Repozytorium
         Ubranie GetById(int id);
         IEnumerable<Ubranie> GetAll();
         void Add(object clothes);
-        void Remove(object ubranie);
+        void Remove(int clotheId);
         void Update(object clothes);
     }
 }

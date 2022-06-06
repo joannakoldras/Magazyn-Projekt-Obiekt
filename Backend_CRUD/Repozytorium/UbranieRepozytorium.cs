@@ -49,10 +49,9 @@ namespace Backend_CRUD.Repozytorium
             dbContext.SaveChanges();
         }
 
-        public void Remove(object ubranie)
+        public void Remove(int clotheId)
         {
-            var rzutowaneUbranie = (Ubranie)ubranie;
-            var ubranieDoUsueiecia = GetById(rzutowaneUbranie.Id);
+            var ubranieDoUsueiecia = GetById(clotheId);
 
             if (ubranieDoUsueiecia != null)
             {
