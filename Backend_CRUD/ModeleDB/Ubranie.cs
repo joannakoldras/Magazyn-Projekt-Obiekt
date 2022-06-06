@@ -20,17 +20,17 @@ namespace Backend_CRUD.DB_Tables
         public int IdKategorii { get; set; }
 
         [ForeignKey("IdKategorii")]
-        public virtual Kategoria Id_Kategorii { get; set; }
+        public virtual Kategoria Id_KategoriiWirtualne { get; set; }
 
         public int IdKoloru { get; set; }
 
         [ForeignKey("IdKoloru")]
-        public virtual Kolor Id_Koloru { get; set; }
+        public virtual Kolor Id_KoloruWirtualne { get; set; }
 
         public int IdMarki { get; set; }
 
         [ForeignKey("IdMarki")]
-        public virtual Marka Id_Marki { get; set; }
+        public virtual Marka Id_MarkiWirtualne { get; set; }
 
         [Required]
         [StringLength(50)]
