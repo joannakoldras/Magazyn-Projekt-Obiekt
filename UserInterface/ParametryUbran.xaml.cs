@@ -47,6 +47,8 @@ namespace UserInterface
             DodajMarkeBtn.Click += new RoutedEventHandler(DodajMarkeBtn_Click);
             ZaktualizujMarkeBtn.Click += new RoutedEventHandler(ZaktualizujMarkeBtn_Click);
             UsunMarkeBtn.Click += new RoutedEventHandler(UsunMarkeBtn_Click);
+
+            OdswiezGridyBtn.Click += new RoutedEventHandler(OdswiezWszystkieBtn_Click);
         }
 
         private void DodajKategorieBtn_Click(object sender, RoutedEventArgs e)
@@ -167,6 +169,15 @@ namespace UserInterface
             MarkaGrid.ItemsSource = markaRepozytorium.GetAll();
             MessageBox.Show("Usuniete");
         }
+
+        private void OdswiezWszystkieBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MarkaGrid.ItemsSource = markaRepozytorium.GetAll();
+            KolorGrid.ItemsSource = koloryRepozytorium.GetAll();
+            KategoriaGrid.ItemsSource = kategoriaRepozytorium.GetAll();
+            MessageBox.Show("Odswiezono");
+        }
     }
 }
+
 
