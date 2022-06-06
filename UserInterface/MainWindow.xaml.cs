@@ -1,4 +1,5 @@
-﻿using Backend_CRUD.Repozytorium;
+﻿using Backend_CRUD.DB_Tables;
+using Backend_CRUD.Repozytorium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,36 +22,66 @@ namespace UserInterface
     /// </summary>
     public partial class MainWindow : Window
     {
-        private UbranieRepozytorium ubranieRepozytorium { get; set; }
-
+        private UbranieRepozytorium ubraniaRepozytorium;
         public MainWindow()
         {
-            InitializeComponent(); //renderowanie
-            ubranieRepozytorium = new UbranieRepozytorium();
-            UbraniaGrid.ItemsSource = ubranieRepozytorium.GetAll();
-            DodajUbranieBtn.Click += DodajUbranieBtn_Click;
-            OdswiezBtn.Click += OdswiezBtn_Click;
-            UsunUbranieBtn.Click += UsunUbranieBtn_Click;
+            InitializeComponent();
+            ubraniaRepozytorium = new UbranieRepozytorium();
+
+            UbraniaGrid.ItemsSource = ubraniaRepozytorium.GetAll();
+            DodajPrzycisk.Click += new RoutedEventHandler(DodajButton_Click);
+            AktualizujPrzycik.Click += new RoutedEventHandler(AktualizujButton_Click);
+            UsunPrzycisk.Click += new RoutedEventHandler(UsunButton_Click);
+            OdswiezPrzycisk.Click += new RoutedEventHandler(OdswiezButton_Click);
+            PokazPrzycisk.Click += new RoutedEventHandler(PokazButton_Click);
         }
 
-        private void UsunUbranieBtn_Click(object sender, RoutedEventArgs e)
+        private void DataGrid_OnAutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            var Item = UbraniaGrid.SelectedItem;
-            ubranieRepozytorium.Remove(Item);
-            MessageBox.Show("Removed!");
+            if (e.PropertyName.Contains("Wirtualne"))
+            {
+                e.Column.Visibility = Visibility.Hidden;
+            }
+            else if (e.PropertyName == "Id")
+            {
+                e.Column.IsReadOnly = true;
+            }
         }
 
-        private void OdswiezBtn_Click(object sender, RoutedEventArgs e)
+        private void DodajButton_Click(object sender, RoutedEventArgs e)
         {
-            UbraniaGrid.ItemsSource = ubranieRepozytorium.GetAll();
-            MessageBox.Show("Refreshed!");
+            var item = UbraniaGrid.SelectedItem;
+            ubraniaRepozytorium.Add(item);
+            UbraniaGrid.ItemsSource = ubraniaRepozytorium.GetAll();
+            MessageBox.Show("Dodane");
         }
 
-        private void DodajUbranieBtn_Click(object sender, RoutedEventArgs e)
+        private void AktualizujButton_Click(object sender, RoutedEventArgs e)
         {
-            var Item = UbraniaGrid.SelectedItem;
-            ubranieRepozytorium.Add(Item);
-            MessageBox.Show("Added!");
+            var item = UbraniaGrid.SelectedItem;
+            ubraniaRepozytorium.Update(item);
+            UbraniaGrid.ItemsSource = ubraniaRepozytorium.GetAll();
+            MessageBox.Show("Zaktualizowane");
+        }
+
+        private void UsunButton_Click(object sender, RoutedEventArgs e)
+        {
+            var item = (Ubranie)UbraniaGrid.SelectedItem;
+            ubraniaRepozytorium.Remove(item.Id);
+            UbraniaGrid.ItemsSource = ubraniaRepozytorium.GetAll();
+            MessageBox.Show("Usuniete");
+        }
+
+        private void OdswiezButton_Click(object sender, RoutedEventArgs e)
+        {
+            UbraniaGrid.ItemsSource = ubraniaRepozytorium.GetAll();
+            MessageBox.Show("Odswiezone");
+        }
+
+        private void PokazButton_Click(object sender, RoutedEventArgs e)
+        {
+            ParametryUbran clothesParamsWindow = new ParametryUbran();
+            clothesParamsWindow.Show();
         }
     }
 }
