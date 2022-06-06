@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using UserInterface.Walidatory;
 
 namespace UserInterface
 {
@@ -50,18 +51,32 @@ namespace UserInterface
 
         private void DodajKategorieBtn_Click(object sender, RoutedEventArgs e)
         {
-            var item = KategoriaGrid.SelectedItem;
-            kategoriaRepozytorium.Add(item);
-            KategoriaGrid.ItemsSource = kategoriaRepozytorium.GetAll();
-            MessageBox.Show("Dodane");
+            var item = (Kategoria)KategoriaGrid.SelectedItem;
+            if (WalidatorNapisu.CzyNapisNieJestPusty(item.NazwaKategorii))
+            {
+                kategoriaRepozytorium.Add(item);
+                KategoriaGrid.ItemsSource = kategoriaRepozytorium.GetAll();
+                MessageBox.Show("Dodane");
+            }
+            else
+            {
+                MessageBox.Show("Podano bledne dane");
+            }
         }
 
         private void AktualizujKategorieBtn_Click(object sender, RoutedEventArgs e)
         {
-            var item = KategoriaGrid.SelectedItem;
-            kategoriaRepozytorium.Update(item);
-            KategoriaGrid.ItemsSource = kategoriaRepozytorium.GetAll();
-            MessageBox.Show("Zaktualizowane");
+            var item = (Kategoria)KategoriaGrid.SelectedItem;
+            if (WalidatorNapisu.CzyNapisNieJestPusty(item.NazwaKategorii))
+            {
+                kategoriaRepozytorium.Update(item);
+                KategoriaGrid.ItemsSource = kategoriaRepozytorium.GetAll();
+                MessageBox.Show("Zaktualizowane");
+            }
+            else
+            {
+                MessageBox.Show("Podano bledne dane");
+            }
         }
 
         private void UsunKategorieBtn_Click(object sender, RoutedEventArgs e)
@@ -74,18 +89,35 @@ namespace UserInterface
 
         private void DodajKolorBtn_Click(object sender, RoutedEventArgs e)
         {
-            var item = KolorGrid.SelectedItem;
-            koloryRepozytorium.Add(item);
-            KolorGrid.ItemsSource = koloryRepozytorium.GetAll();
-            MessageBox.Show("Dodane");
+            var item = (Kolor)KolorGrid.SelectedItem;
+
+            if (WalidatorNapisu.CzyNapisNieJestPusty(item.NazwaKoloru))
+            {
+                koloryRepozytorium.Add(item);
+                KolorGrid.ItemsSource = koloryRepozytorium.GetAll();
+                MessageBox.Show("Dodane");
+            }
+            else
+            {
+                MessageBox.Show("Podano bledne dane");
+            }
+           
         }
 
         private void ZaktualizujKolorBtn_Click(object sender, RoutedEventArgs e)
         {
-            var item = KolorGrid.SelectedItem;
-            koloryRepozytorium.Update(item);
-            KolorGrid.ItemsSource = koloryRepozytorium.GetAll();
-            MessageBox.Show("Zaktualizowane");
+            var item = (Kolor)KolorGrid.SelectedItem;
+
+            if (WalidatorNapisu.CzyNapisNieJestPusty(item.NazwaKoloru))
+            {
+                koloryRepozytorium.Update(item);
+                KolorGrid.ItemsSource = koloryRepozytorium.GetAll();
+                MessageBox.Show("Zaktualizowane");
+            }
+            else
+            {
+                MessageBox.Show("Podano bledne dane");
+            }
         }
 
         private void UsunKolorBtn_Click(object sender, RoutedEventArgs e)
@@ -98,19 +130,34 @@ namespace UserInterface
 
         private void DodajMarkeBtn_Click(object sender, RoutedEventArgs e)
         {
-            var item = MarkaGrid.SelectedItem;
-            markaRepozytorium.Add(item);
-            MarkaGrid.ItemsSource = markaRepozytorium.GetAll();
-            MessageBox.Show("Dodane");
+            var item = (Marka)MarkaGrid.SelectedItem;
 
+            if (WalidatorNapisu.CzyNapisNieJestPusty(item.NazwaMarki))
+            {
+                markaRepozytorium.Add(item);
+                MarkaGrid.ItemsSource = markaRepozytorium.GetAll();
+                MessageBox.Show("Dodane");
+            }
+            else
+            {
+                MessageBox.Show("Podano bledne dane");
+            }
         }
 
         private void ZaktualizujMarkeBtn_Click(object sender, RoutedEventArgs e)
         {
-            var item = MarkaGrid.SelectedItem;
-            markaRepozytorium.Update(item);
-            MarkaGrid.ItemsSource = markaRepozytorium.GetAll();
-            MessageBox.Show("Zaktualizowane");
+            var item = (Marka)MarkaGrid.SelectedItem;
+
+            if (WalidatorNapisu.CzyNapisNieJestPusty(item.NazwaMarki))
+            {
+                markaRepozytorium.Update(item);
+                MarkaGrid.ItemsSource = markaRepozytorium.GetAll();
+                MessageBox.Show("Zaktualizowane");
+            }
+            else
+            {
+                MessageBox.Show("Podano bledne dane");
+            }
         }
 
         private void UsunMarkeBtn_Click(object sender, RoutedEventArgs e)

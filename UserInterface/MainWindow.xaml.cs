@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UserInterface.Walidatory;
 
 namespace UserInterface
 {
@@ -50,18 +51,38 @@ namespace UserInterface
 
         private void DodajButton_Click(object sender, RoutedEventArgs e)
         {
-            var item = UbraniaGrid.SelectedItem;
-            ubraniaRepozytorium.Add(item);
-            UbraniaGrid.ItemsSource = ubraniaRepozytorium.GetAll();
-            MessageBox.Show("Dodane");
+            var item = (Ubranie)UbraniaGrid.SelectedItem;
+
+            if (WalidatorNapisu.CzyNapisNieJestPusty(item.NazwaUbrania) &&
+                WalidatorIlosci.CzyWiekszeOdZera(item.Cena) &&
+                WalidatorIlosci.CzyWiekszeOdZera(item.Ilosc))
+            {
+                ubraniaRepozytorium.Add(item);
+                MessageBox.Show("Dodane");
+                UbraniaGrid.ItemsSource = ubraniaRepozytorium.GetAll();
+            }
+            else
+            {
+                MessageBox.Show("Podano bledne dane");
+            }
         }
 
         private void AktualizujButton_Click(object sender, RoutedEventArgs e)
         {
-            var item = UbraniaGrid.SelectedItem;
-            ubraniaRepozytorium.Update(item);
-            UbraniaGrid.ItemsSource = ubraniaRepozytorium.GetAll();
-            MessageBox.Show("Zaktualizowane");
+            var item = (Ubranie)UbraniaGrid.SelectedItem;
+
+            if(WalidatorNapisu.CzyNapisNieJestPusty(item.NazwaUbrania) &&
+                WalidatorIlosci.CzyWiekszeOdZera(item.Cena) &&
+                WalidatorIlosci.CzyWiekszeOdZera(item.Ilosc))
+            {
+                ubraniaRepozytorium.Update(item);
+                UbraniaGrid.ItemsSource = ubraniaRepozytorium.GetAll();
+                MessageBox.Show("Zaktualizowane");
+            }
+            else
+            {
+                MessageBox.Show("Podano bledne dane");
+            }        
         }
 
         private void UsunButton_Click(object sender, RoutedEventArgs e)
