@@ -27,22 +27,27 @@ namespace Backend_CRUD.Repozytorium
         public IEnumerable<Marka> GetAll()
         {
             List<Marka> wyniki = new List<Marka>();
-
-            wyniki = dbContext.Marki.OrderBy(x => x.Id).ToList();
-
+            using (var dbContext = new MagazynDbContext())
+            {
+                wyniki = dbContext.Marki.OrderBy(x => x.Id).ToList();
+            }
             return wyniki;
         }
 
         public void Add(object brand)
         {
             var rzutowanaMarka = (Marka)brand;
-            var brandToPass = new Marka()
+            using (var dbContext = new MagazynDbContext())
             {
-                NazwaMarki = rzutowanaMarka.NazwaMarki
-            };
 
-            dbContext.Marki.Add(brandToPass);
-            dbContext.SaveChanges();
+                var brandToPass = new Marka()
+                {
+                    NazwaMarki = rzutowanaMarka.NazwaMarki
+                };
+
+                dbContext.Marki.Add(brandToPass);
+                dbContext.SaveChanges();
+            }
         }
 
         public void Remove(int brandId)

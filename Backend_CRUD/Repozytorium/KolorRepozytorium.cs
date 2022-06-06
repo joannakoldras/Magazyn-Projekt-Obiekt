@@ -28,21 +28,28 @@ namespace Backend_CRUD.Repozytorium
         {
             List<Kolor> results = new List<Kolor>();
 
-            results = dbContext.Kolory.OrderBy(x => x.Id).ToList();
-
+            using (var dbContext = new MagazynDbContext())
+            {
+                results = dbContext.Kolory.OrderBy(x => x.Id).ToList();
+            }
             return results;
         }
 
         public void Add(object color)
         {
             var rzutowanyKolor = (Kolor)color;
-            var kolordoPrzekazania = new Kolor()
-            {
-                NazwaKoloru = rzutowanyKolor.NazwaKoloru
-            };
 
-            dbContext.Kolory.Add(kolordoPrzekazania);
-            dbContext.SaveChanges();
+            using (var dbContext = new MagazynDbContext())
+            {
+
+                var kolordoPrzekazania = new Kolor()
+                {
+                    NazwaKoloru = rzutowanyKolor.NazwaKoloru
+                };
+
+                dbContext.Kolory.Add(kolordoPrzekazania);
+                dbContext.SaveChanges();
+            }
         }
 
         public void Remove(int colorId)

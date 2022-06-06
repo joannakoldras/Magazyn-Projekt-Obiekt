@@ -28,21 +28,29 @@ namespace Backend_CRUD.Repozytorium
         {
             List<Kategoria> wyniki = new List<Kategoria>();
 
-            wyniki = dbContext.Kategorie.OrderBy(x => x.Id).ToList();
+            using (var dbContext = new MagazynDbContext())
+            {
 
+                wyniki = dbContext.Kategorie.OrderBy(x => x.Id).ToList();
+            }
             return wyniki;
         }
 
         public void Add(object category)
         {
             var rzutowanaKategoria = (Kategoria)category;
-            var categoryToPass = new Kategoria()
-            {
-                NazwaKategorii = rzutowanaKategoria.NazwaKategorii
-            };
 
-            dbContext.Kategorie.Add(categoryToPass);
-            dbContext.SaveChanges();
+            using (var dbContext = new MagazynDbContext())
+            {
+
+                var categoryToPass = new Kategoria()
+                {
+                    NazwaKategorii = rzutowanaKategoria.NazwaKategorii
+                };
+
+                dbContext.Kategorie.Add(categoryToPass);
+                dbContext.SaveChanges();
+            }
         }
 
         public void Remove(int categoryId)
