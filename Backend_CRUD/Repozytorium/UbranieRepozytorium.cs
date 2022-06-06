@@ -26,27 +26,32 @@ namespace Backend_CRUD.Repozytorium
         public IEnumerable<Ubranie> GetAll()
         {
             List<Ubranie> results = new List<Ubranie>();
-
-            results = dbContext.Ubrania.OrderBy(x => x.NazwaUbrania).ToList();
+            using (var dbContext = new MagazynDbContext())
+            {
+                results = dbContext.Ubrania.OrderBy(x => x.NazwaUbrania).ToList();
+            }
 
             return results;
         }
 
         public void Add(object clothes)
         {
-            var rzutowaneUbranie = (Ubranie)clothes;
-            var ubranieDoZapisania = new Ubranie()
+            using (var dbContext = new MagazynDbContext())
             {
-                IdKategorii = rzutowaneUbranie.IdKategorii,
-                IdMarki = rzutowaneUbranie.IdMarki,
-                IdKoloru = rzutowaneUbranie.IdKoloru,
-                NazwaUbrania = rzutowaneUbranie.NazwaUbrania,
-                Cena = rzutowaneUbranie.Cena,
-                Ilosc = rzutowaneUbranie.Ilosc
-            };
+                var rzutowaneUbranie = (Ubranie)clothes;
+                var ubranieDoZapisania = new Ubranie()
+                {
+                    IdKategorii = rzutowaneUbranie.IdKategorii,
+                    IdMarki = rzutowaneUbranie.IdMarki,
+                    IdKoloru = rzutowaneUbranie.IdKoloru,
+                    NazwaUbrania = rzutowaneUbranie.NazwaUbrania,
+                    Cena = rzutowaneUbranie.Cena,
+                    Ilosc = rzutowaneUbranie.Ilosc
+                };
 
-            dbContext.Ubrania.Add(ubranieDoZapisania);
-            dbContext.SaveChanges();
+                dbContext.Ubrania.Add(ubranieDoZapisania);
+                dbContext.SaveChanges();
+            }
         }
 
         public void Remove(int clotheId)
