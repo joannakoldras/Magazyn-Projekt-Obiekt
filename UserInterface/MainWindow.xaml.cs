@@ -114,5 +114,10 @@ namespace UserInterface
             ParametryUbran clothesParamsWindow = new ParametryUbran();
             clothesParamsWindow.Show();
         }
+
+        private void UbraniaGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -12,11 +12,11 @@
             <ColumnDefinition Width="37*"/>
         </Grid.ColumnDefinitions>
         <DataGrid x:Name="UbraniaGrid" AutoGenerateColumns="true"
-          AutoGeneratingColumn="DataGrid_OnAutoGeneratingColumn" HorizontalAlignment="Left" Height="329" Margin="41,30,0,0" VerticalAlignment="Top" Width="718" Grid.ColumnSpan="2"/>
-        <Button x:Name="DodajPrzycisk" Content="Dodaj" HorizontalAlignment="Left" Height="30" Margin="41,373,0,0" VerticalAlignment="Top" Width="94"/>
-        <Button x:Name="AktualizujPrzycik" Content="Zaktualizuj" HorizontalAlignment="Right" Height="30" Margin="0,373,551,0" VerticalAlignment="Top" Width="94" Grid.ColumnSpan="2"/>
-        <Button x:Name="UsunPrzycisk" Content="Usun" HorizontalAlignment="Left" Height="30" Margin="61,373,0,0" VerticalAlignment="Top" Width="94" Grid.Column="1"/>
-        <Button x:Name="PokazPrzycisk" Content="Pokaz parametry ubran" HorizontalAlignment="Right" Height="30" Margin="0,373,41,0" VerticalAlignment="Top" Width="129" Grid.Column="1"/>
-        <Button x:Name="OdswiezPrzycisk" Content="Odswiez" HorizontalAlignment="Right" Height="30" Margin="0,373,190,0" VerticalAlignment="Top" Width="94" Grid.Column="1"/>
+          AutoGeneratingColumn="DataGrid_OnAutoGeneratingColumn" HorizontalAlignment="Left" Height="329" Margin="41,30,0,0" VerticalAlignment="Top" Width="718" Grid.ColumnSpan="2" SelectionChanged="UbraniaGrid_SelectionChanged" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button x:Name="DodajPrzycisk" Content="Dodaj" Height="30" Margin="62,373,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Width="98"/>
+        <Button x:Name="AktualizujPrzycik" Content="Zaktualizuj" HorizontalAlignment="Left" Height="30" Margin="177,373,0,0" VerticalAlignment="Top" Width="94" Grid.ColumnSpan="2"/>
+        <Button x:Name="UsunPrzycisk" Content="Usun" HorizontalAlignment="Left" Height="30" Margin="83,373,0,0" VerticalAlignment="Top" Width="94" Grid.Column="1"/>
+        <Button x:Name="PokazPrzycisk" Content="Pokaz parametry ubran" HorizontalAlignment="Left" Height="30" Margin="395,373,0,0" VerticalAlignment="Top" Width="130" Grid.Column="1"/>
+        <Button x:Name="OdswiezPrzycisk" Content="Odswiez" HorizontalAlignment="Left" Height="30" Margin="282,373,0,0" VerticalAlignment="Top" Width="94" Grid.Column="1"/>
     </Grid>
 </Window>
