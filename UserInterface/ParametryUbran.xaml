@@ -7,11 +7,14 @@
         mc:Ignorable="d"
         Title="ClothesParams" Height="450" Width="800">
     <Grid>
-        <DataGrid x:Name="KolorGrid" HorizontalAlignment="Left" Height="256" Margin="10,59,0,0" VerticalAlignment="Top" Width="250
+        <DataGrid x:Name="KolorGrid"  AutoGenerateColumns="true"
+          AutoGeneratingColumn="DataGrid_OnAutoGeneratingColumn" HorizontalAlignment="Left" Height="256" Margin="10,59,0,0" VerticalAlignment="Top" Width="250
                   "/>
-        <DataGrid x:Name="MarkaGrid" HorizontalAlignment="Left" Height="256" Margin="265,59,0,0" VerticalAlignment="Top" Width="250
+        <DataGrid x:Name="MarkaGrid"  AutoGenerateColumns="true"
+          AutoGeneratingColumn="DataGrid_OnAutoGeneratingColumn" HorizontalAlignment="Left" Height="256" Margin="265,59,0,0" VerticalAlignment="Top" Width="250
                   "/>
-        <DataGrid x:Name="KategoriaGrid" HorizontalAlignment="Left" Height="256" Margin="520,59,0,0" VerticalAlignment="Top" Width="250
+        <DataGrid x:Name="KategoriaGrid"  AutoGenerateColumns="true"
+          AutoGeneratingColumn="DataGrid_OnAutoGeneratingColumn" HorizontalAlignment="Left" Height="256" Margin="520,59,0,0" VerticalAlignment="Top" Width="250
                   "/>
         <Button x:Name="DodajKolorBtn" Content="Dodaj" HorizontalAlignment="Left" Height="30" Margin="51,337,0,0" VerticalAlignment="Top" Width="70"/>
         <Button x:Name="ZaktualizujKolorBtn" Content="Zaktualizuj" HorizontalAlignment="Left" Height="30" Margin="126,337,0,0" VerticalAlignment="Top" Width="70"/>
