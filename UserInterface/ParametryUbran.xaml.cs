@@ -51,6 +51,14 @@ namespace UserInterface
             OdswiezGridyBtn.Click += new RoutedEventHandler(OdswiezWszystkieBtn_Click);
         }
 
+        private void DataGrid_OnAutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName == "Id")
+            {
+                e.Column.IsReadOnly = true;
+            }
+        }
+
         private void DodajKategorieBtn_Click(object sender, RoutedEventArgs e)
         {
             var item = (Kategoria)KategoriaGrid.SelectedItem;
