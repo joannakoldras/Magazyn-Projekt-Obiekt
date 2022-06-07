@@ -53,9 +53,16 @@ namespace UserInterface
         {
             var item = (Ubranie)UbraniaGrid.SelectedItem;
 
-            if (WalidatorNapisu.CzyNapisNieJestPusty(item.NazwaUbrania) &&
+            if(item == null)
+            {
+                MessageBox.Show("Podano pusty rekord");
+            }
+            else if (WalidatorNapisu.CzyNapisNieJestPusty(item.NazwaUbrania) &&
                 WalidatorIlosci.CzyWiekszeOdZera(item.Cena) &&
-                WalidatorIlosci.CzyWiekszeOdZera(item.Ilosc))
+                WalidatorIlosci.CzyWiekszeOdZera(item.Ilosc) &&
+                WalidatorParametruUbran.CzyIdKategoriiNieJestSpozaZakresu(item.IdKategorii) &&
+                WalidatorParametruUbran.CzyIdKoloruNieJestSpozaZakresu(item.IdKoloru) &&
+                WalidatorParametruUbran.CzyIdMarkiNieJestSpozaZakresu(item.IdMarki))
             {
                 ubraniaRepozytorium.Add(item);
                 MessageBox.Show("Dodane");
@@ -73,7 +80,10 @@ namespace UserInterface
 
             if(WalidatorNapisu.CzyNapisNieJestPusty(item.NazwaUbrania) &&
                 WalidatorIlosci.CzyWiekszeOdZera(item.Cena) &&
-                WalidatorIlosci.CzyWiekszeOdZera(item.Ilosc))
+                WalidatorIlosci.CzyWiekszeOdZera(item.Ilosc) &&
+                WalidatorParametruUbran.CzyIdKategoriiNieJestSpozaZakresu(item.IdKategorii) &&
+                WalidatorParametruUbran.CzyIdKoloruNieJestSpozaZakresu(item.IdKoloru) &&
+                WalidatorParametruUbran.CzyIdMarkiNieJestSpozaZakresu(item.IdMarki))
             {
                 ubraniaRepozytorium.Update(item);
                 UbraniaGrid.ItemsSource = ubraniaRepozytorium.GetAll();
