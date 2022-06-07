@@ -30,7 +30,6 @@ namespace Backend_CRUD.Repozytorium
 
             using (var dbContext = new MagazynDbContext())
             {
-
                 wyniki = dbContext.Kategorie.OrderBy(x => x.Id).ToList();
             }
             return wyniki;
