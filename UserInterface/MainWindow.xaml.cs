@@ -51,11 +51,11 @@ namespace UserInterface
 
         private void DodajButton_Click(object sender, RoutedEventArgs e)
         {
-            var item = (Ubranie)UbraniaGrid.SelectedItem;
+            var item = UbraniaGrid.SelectedItem as Ubranie;
 
-            if(item == null)
+            if (item == null) 
             {
-                MessageBox.Show("Podano pusty rekord");
+                MessageBox.Show("Pusty rekord. Wprowadz dane");
             }
             else if (WalidatorNapisu.CzyNapisNieJestPusty(item.NazwaUbrania) &&
                 WalidatorIlosci.CzyWiekszeOdZera(item.Cena) &&
@@ -76,9 +76,13 @@ namespace UserInterface
 
         private void AktualizujButton_Click(object sender, RoutedEventArgs e)
         {
-            var item = (Ubranie)UbraniaGrid.SelectedItem;
+            var item = UbraniaGrid.SelectedItem as Ubranie;
 
-            if(WalidatorNapisu.CzyNapisNieJestPusty(item.NazwaUbrania) &&
+            if (item == null)
+            {
+                MessageBox.Show("Pusty rekord. Wprowadz dane");
+            }
+            else if (WalidatorNapisu.CzyNapisNieJestPusty(item.NazwaUbrania) &&
                 WalidatorIlosci.CzyWiekszeOdZera(item.Cena) &&
                 WalidatorIlosci.CzyWiekszeOdZera(item.Ilosc) &&
                 WalidatorParametruUbran.CzyIdKategoriiNieJestSpozaZakresu(item.IdKategorii) &&
@@ -97,10 +101,18 @@ namespace UserInterface
 
         private void UsunButton_Click(object sender, RoutedEventArgs e)
         {
-            var item = (Ubranie)UbraniaGrid.SelectedItem;
-            ubraniaRepozytorium.Remove(item.Id);
-            UbraniaGrid.ItemsSource = ubraniaRepozytorium.GetAll();
-            MessageBox.Show("Usuniete");
+            var item = UbraniaGrid.SelectedItem as Ubranie;
+
+            if (item == null)
+            {
+                MessageBox.Show("Pusty rekord. Wprowadz dane");
+            }
+            else
+            {
+                ubraniaRepozytorium.Remove(item.Id);
+                UbraniaGrid.ItemsSource = ubraniaRepozytorium.GetAll();
+                MessageBox.Show("Usuniete");
+            }
         }
 
         private void OdswiezButton_Click(object sender, RoutedEventArgs e)
