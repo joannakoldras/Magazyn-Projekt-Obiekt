@@ -8,15 +8,15 @@
         Title="Clothes Store" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="13*"/>
-            <ColumnDefinition Width="37*"/>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="151*"/>
         </Grid.ColumnDefinitions>
         <DataGrid x:Name="UbraniaGrid" AutoGenerateColumns="true"
-          AutoGeneratingColumn="DataGrid_OnAutoGeneratingColumn" HorizontalAlignment="Left" Height="329" Margin="41,30,0,0" VerticalAlignment="Top" Width="718" Grid.ColumnSpan="2" SelectionChanged="UbraniaGrid_SelectionChanged" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Button x:Name="DodajPrzycisk" Content="Dodaj" Height="30" Margin="62,373,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Width="98"/>
-        <Button x:Name="AktualizujPrzycik" Content="Zaktualizuj" HorizontalAlignment="Left" Height="30" Margin="177,373,0,0" VerticalAlignment="Top" Width="94" Grid.ColumnSpan="2"/>
-        <Button x:Name="UsunPrzycisk" Content="Usun" HorizontalAlignment="Left" Height="30" Margin="83,373,0,0" VerticalAlignment="Top" Width="94" Grid.Column="1"/>
-        <Button x:Name="PokazPrzycisk" Content="Pokaz parametry ubran" HorizontalAlignment="Left" Height="30" Margin="395,373,0,0" VerticalAlignment="Top" Width="130" Grid.Column="1"/>
-        <Button x:Name="OdswiezPrzycisk" Content="Odswiez" HorizontalAlignment="Left" Height="30" Margin="282,373,0,0" VerticalAlignment="Top" Width="94" Grid.Column="1"/>
+          AutoGeneratingColumn="DataGrid_OnAutoGeneratingColumn" HorizontalAlignment="Left" Height="329" Margin="3,30,0,0" VerticalAlignment="Top" Width="718" SelectionChanged="UbraniaGrid_SelectionChanged" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1"/>
+        <Button x:Name="DodajPrzycisk" Content="Dodaj" Height="30" Margin="4,364,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Width="98" Grid.Column="1"/>
+        <Button x:Name="AktualizujPrzycik" Content="Zaktualizuj" HorizontalAlignment="Left" Height="30" Margin="120,364,0,0" VerticalAlignment="Top" Width="94" Grid.Column="1"/>
+        <Button x:Name="UsunPrzycisk" Content="Usun" HorizontalAlignment="Left" Height="30" Margin="230,364,0,0" VerticalAlignment="Top" Width="94" Grid.Column="1"/>
+        <Button x:Name="PokazPrzycisk" Content="Pokaz parametry ubran" HorizontalAlignment="Left" Height="30" Margin="591,364,0,0" VerticalAlignment="Top" Width="130" Grid.Column="1"/>
+        <Button x:Name="OdswiezPrzycisk" Content="Odswiez" HorizontalAlignment="Left" Height="30" Margin="479,364,0,0" VerticalAlignment="Top" Width="94" Grid.Column="1"/>
     </Grid>
 </Window>
